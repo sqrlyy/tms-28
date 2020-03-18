@@ -1,0 +1,38 @@
+import classes
+
+a = classes.Point(1, 2)
+b = classes.Point(5, 6)
+print(a)
+center = classes.Point(3,3)
+b = classes.Circle(center, 5)
+print(b.square())
+point1 = classes.Point(1, 2)
+point2 = classes.Point(7, 2)
+point3 = classes.Point(7, 9)
+c = classes.Triangle(point1, point2, point3)
+print(c.first_coord)
+print(c.perimeter())
+print(c.square())
+point1 = classes.Point(1, 1)
+point2 = classes.Point(4, 4)
+d = classes.Square(point1, point2)
+print(d.perimeter())
+print(d.square())
+#########
+print('Make a circle')
+point1 = classes.Point(int(input('x: ')), int(input('y: ')))
+radius = float(input('radius: '))
+circle = classes.Circle(point1, radius)
+print('Make a triangle')
+point1 = classes.Point(int(input('x: ')), int(input('y: ')))
+point2 = classes.Point(int(input('x: ')), int(input('y: ')))
+point3 = classes.Point(int(input('x: ')), int(input('y: ')))
+triangle = classes.Triangle(point1, point2, point3)
+print('Make a square')
+point1 = classes.Point(int(input('x: ')), int(input('y: ')))
+point2 = classes.Point(int(input('x: ')), int(input('y: ')))
+square = classes.Square(point1, point2)
+figures = [circle, triangle, square]
+for figure in figures:
+    print(f'Square: {figure.square()}')
+
