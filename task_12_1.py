@@ -21,40 +21,52 @@ class Time:
                 self.seconds == other.seconds
         )
 
-    def __ne__(self, other):
+        def __ne__(self, other):
         return (
-                self.hours != other.hours and
-                self.minutes != other.minutes and
+                self.hours != other.hours or
+                self.minutes != other.minutes or
                 self.seconds != other.seconds
         )
 
     def __lt__(self, other):
-        return (
-                self.hours < other.hours and
-                self.minutes < other.minutes and
-                self.seconds < other.seconds
-        )
+        if self.hours < other.hours:
+            return True
+        elif self.hours == other.hours and self.minutes < other.minutes:
+            return True
+        elif self.hours == other.hours and self.minutes == other.minutes and self.seconds < other.seconds:
+            return True
+        else:
+            return False
 
     def __gt__(self, other):
-        return (
-                self.hours > other.hours and
-                self.minutes > other.minutes and
-                self.seconds > other.seconds
-        )
+        if self.hours > other.hours:
+            return True
+        elif self.hours == other.hours and self.minutes > other.minutes:
+            return True
+        elif self.hours == other.hours and self.minutes == other.minutes and self.seconds > other.seconds:
+            return True
+        else:
+            return False
 
     def __le__(self, other):
-        return (
-                self.hours <= other.hours and
-                self.minutes <= other.minutes and
-                self.seconds <= other.seconds
-        )
+        if self.hours < other.hours:
+            return True
+        elif self.hours == other.hours and self.minutes < other.minutes:
+            return True
+        elif self.hours == other.hours and self.minutes == other.minutes and self.seconds <= other.seconds:
+            return True
+        else:
+            return False
 
     def __ge__(self, other):
-        return (
-                self.hours >= other.hours and
-                self.minutes >= other.minutes and
-                self.seconds >= other.seconds
-        )
+        if self.hours > other.hours:
+            return True
+        elif self.hours == other.hours and self.minutes > other.minutes:
+            return True
+        elif self.hours == other.hours and self.minutes == other.minutes and self.seconds >= other.seconds:
+            return True
+        else:
+            return False
 
     def __sub__(self, other):
         return Time(
@@ -114,3 +126,8 @@ fourth = Time(string_time='47:66:128')  # 00:08:08
 print(fourth)
 fifth = Time(other_class_object=first)
 print(fifth)
+
+print('###############')
+test_time1 = Time(10, 10, 10)
+test_time2 = Time(10, 10, 10)
+print(test_time2 >= test_time1)
