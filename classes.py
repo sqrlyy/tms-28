@@ -28,7 +28,7 @@ class Circle(Figure):
         return 3.14 * self.radius ** 2
 
 
-class Triangle(Figure, Point):
+class Triangle(Figure):
 
     def __init__(self, point1, point2, point3):
         self.first_coord = point1
@@ -49,7 +49,7 @@ class Triangle(Figure, Point):
         return sqrt(p * (p - self.first_line) * (p - self.second_line) * (p - self.third_line))
 
 
-class Square(Figure, Point):
+class Square(Figure):
     def __init__(self, point1, point2):
         self.first_coord = point1
         self.second_coord = point2
