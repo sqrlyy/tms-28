@@ -45,7 +45,7 @@ class Triangle(Figure, Point):
         return self.first_line + self.second_line + self.third_line
 
     def square(self):
-        p = self.perimeter(self) / 2
+        p = self.perimeter() / 2
         return sqrt(p * (p - self.first_line) * (p - self.second_line) * (p - self.third_line))
 
 
