@@ -11,7 +11,7 @@ def timer(time_to_go):
         print(time_to_go)
         time_to_go = time_to_go - one_second
         sleep(0.999)
-    return 'ALARM!!!'
+        yield time_to_go
 
 
 parser = argparse.ArgumentParser('Timer')
@@ -27,4 +27,9 @@ user_time = timedelta(hours=int(args.hours), minutes=int(args.minutes), seconds=
 with open('log_14_1.txt', 'a') as file:
     file.writelines(f'Opener: {args.first_name} {args.last_name}, time: {datetime.now()} \n')
 
-print(timer(user_time))
+timer_generator = timer(user_time)
+
+for i in timer_generator:
+    print(i)
+
+print('ALARM!')
