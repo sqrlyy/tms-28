@@ -43,3 +43,5 @@ pomodoro_generator = Pomodoro(args.focus_time, args.break_time, args.cycles)
 
 for i in pomodoro_generator:
     print(i)
+
+print(f'{args.name} is finished')
