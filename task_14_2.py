@@ -19,13 +19,11 @@ def Pomodoro(focus_time, break_time, cycles):
             print('New cycle is started.')
         cycles -= 1
         print('Focus!')
-        # sleep(focus_time * 60)
         for i in timer(timedelta(seconds=focus_time * 60)):
             print(i)
         print('Chill out...')
-        for i in timer(timedelta(seconds=focus_time * 60)):
+        for i in timer(timedelta(seconds=break_time * 60)):
             print(i)
-        sleep(break_time * 60)
         yield 'Cycle finished!'
 
 
