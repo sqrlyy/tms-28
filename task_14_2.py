@@ -8,26 +8,25 @@ def timer(time_to_go):
     zero_time = timedelta(hours=0, minutes=0, seconds=0)
     one_second = timedelta(seconds=1)
     while time_to_go != zero_time:
-        print(time_to_go)
         time_to_go = time_to_go - one_second
         sleep(0.999)
+        yield time_to_go
 
 
-def Pomodoro(focus_time, break_time, cycles, name):
-    print(f'{name} is started.')
+def Pomodoro(focus_time, break_time, cycles):
     while cycles != 0:
         if cycles != args.cycles:
             print('New cycle is started.')
         cycles -= 1
         print('Focus!')
-        sleep(focus_time * 60 - 30)
-        print('Focus ends in:')
-        timer(timedelta(seconds=focus_time * 60 - 30))
+        # sleep(focus_time * 60)
+        for i in timer(timedelta(seconds=focus_time * 60)):
+            print(i)
         print('Chill out...')
-        sleep(break_time * 60 - 30)
-        print('Break ends in:')
-        timer(timedelta(seconds=break_time * 60 - 30))
-    return f'Process {name} is ends.'
+        for i in timer(timedelta(seconds=focus_time * 60)):
+            print(i)
+        sleep(break_time * 60)
+        yield 'Cycle finished!'
 
 
 parser = argparse.ArgumentParser('Pomodoro')
@@ -42,4 +41,7 @@ args = parser.parse_args()
 with open('task_14_2.txt', 'a') as file:
     file.writelines(f'Opener: {args.first_name} {args.last_name}, time: {datetime.now()} \n')
 
-print(Pomodoro(args.focus_time, args.break_time, args.cycles, args.name))
+pomodoro_generator = Pomodoro(args.focus_time, args.break_time, args.cycles)
+
+for i in pomodoro_generator:
+    print(i)
