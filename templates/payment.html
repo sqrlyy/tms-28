@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Payments</title>
+</head>
+<body style="background-color: #F4F7EE">
+<a href="/">Home</a>
+<div class="one"><h1>PAYMENTS</h1></div>
+<table class="table_dark" >
+    <tr>
+        <th>ID</th>
+        <th>AMOUNT</th>
+        <th>TYPE</th>
+        <th>DATE</th>
+        <th>ID OF RECEIPT</th>
+    </tr>
+    {% for item in payment %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.amount }}$</td>
+            <td>{{ item.type }}</td>
+            <td> </td>
+            <td>{{ item.receipt_id }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

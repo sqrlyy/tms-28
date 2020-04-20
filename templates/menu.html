@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Menu</title>
+</head>
+<body link="#63cddb" vlink="#cd5c5c" style="background-color: #F4F7EE">
+<a href="/">Home</a>
+<div class=one> <h1>MENU</h1></div>
+<table class="table_dark">
+    <tr>
+        <th>ID</th>
+        <th>ITEM</th>
+        <th>CATEGORY</th>
+        <th>PRICE</th>
+    </tr>
+    {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td><a href="{{url_for('item', id=item.id)}}" >{{ item.items }}</a></td>
+            <td>{{ item.category }}</td>
+            <td>{{ item.price }}$</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

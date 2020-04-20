@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Employees</title>
+</head>
+<body style="background-color: #F4F7EE">
+<a href="/">Home</a>
+<div class="one"><h1>EMPLOYEES</h1></div>
+<table class="table_dark" >
+    <tr>
+        <th>ID</th>
+        <th>ROLE</th>
+        <th>NAME</th>
+        <th>LAST NAME</th>
+        <th>ADDRESS</th>
+        <th>EMAIL</th>
+    </tr>
+    {% for item in employee %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.role }}</td>
+            <td>{{ item.first_name }}</td>
+            <td>{{ item.last_name }}</td>
+            <td>{{ item.address }}</td>
+            <td>{{ item.email }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

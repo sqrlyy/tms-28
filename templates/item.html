@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ items.items }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body style="background-color: #F4F7EE">
+<a href="/menu">Back</a>
+<div class="four"><h1>{{ items.items }}</h1></div>
+<div><h4>Category: {{ items.category }}</h4></div>
+<div><h4>Price: {{ items.price }}$</h4></div>
+<table class="table_a">
+    <caption>Cooking ingredients</caption>
+    <tr>
+        <th>Name</th>
+        <th>Quantity of ingredients in stock</th>
+        <th>One unit price</th>
+    </tr>
+
+    {% for i in items.ingr %}
+        <tr>
+            <td>{{ i.name}}</td>
+            <td>{{i.quantity}}</td>
+            <td>{{ i.unit_price}}$</td>
+
+        </tr>
+    {% endfor %}
+</table>
+<form action="{{ url_for('edit_items', id=items.id) }}">
+        <button type="submit">Edit</button>
+    </form>
+<form method="post" action="{{ url_for('delete_items', id=items.id) }}">
+        <button type="submit">Delete</button>
+    </form>
+</body>
+</html>

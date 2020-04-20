@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit items</title>
+</head>
+<body>
+    <hr>
+    <h2>Editing item: </h2>
+    <form action="/edit_items/{{edit.id}}" method="POST">
+        Item: <input type="text" name="items" id="items" value="{{ edit.items }}" required>
+        <br>
+        Category: <input type="text" name="category" id="category" value="{{ edit.category }}" required>
+        <br>
+        Price: <input type="number" name="price" id="price" value="{{ edit.price }}" required>
+        <br>
+        <input type="submit" value="Save">
+    </form>
+</body>
+</html>
